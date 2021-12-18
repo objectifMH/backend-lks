@@ -11,7 +11,6 @@ import com.lks.backendtechnicaltest.exception.EntityNotFound;
 import com.lks.backendtechnicaltest.repository.ActorRepository;
 import com.lks.backendtechnicaltest.repository.MovieRepository;
 import com.lks.backendtechnicaltest.service.MovieService;
-import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -83,7 +82,15 @@ public class MovieServiceImpl implements MovieService {
 
     }
 
-    
-    
+    @Override
+    public void deleteById(Integer id) {
+
+        Movie movieToDelete = movieRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFound("Movie with id : " + id + ", is not found !"));
+        movieToDelete.getActors().removeAll(movieToDelete.getActors());
+        //movie.setDirector(null);
+
+        movieRepository.deleteById(id);
+    }
 
 }

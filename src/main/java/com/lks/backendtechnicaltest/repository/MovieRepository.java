@@ -26,10 +26,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query(value = "SELECT  m.id, m.title FROM ACTOR a, actor_movie am, movie m where  am.movie_id = m.id and a.id = am.actor_id and a.id = ?1", nativeQuery = true)
     public List<Movie> findByActor(Integer id);
 
-////  Lister les acteurs d'un film
-//    @Query(value = "SELECT * FROM ACTOR a, ACTOR_MOVIE am WHERE a.id = am.actor_id and am.movie_id = ?1", nativeQuery = true)
-//    public List<Actor> findActorsForMovieById(Integer id);
-
     public Optional<Movie> findByTitleIgnoreCase(String title);
 
     public List<Movie> findByTitleContainingIgnoreCase(String title);

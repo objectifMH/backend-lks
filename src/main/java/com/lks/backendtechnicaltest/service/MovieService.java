@@ -31,4 +31,5 @@ public interface MovieService {
     
     List<Actor> findActorsForMovieById(Integer id);
 
+    void deleteById(Integer id);
 }

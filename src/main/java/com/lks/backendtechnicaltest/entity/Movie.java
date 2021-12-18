@@ -5,6 +5,7 @@
  */
 package com.lks.backendtechnicaltest.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,6 +71,7 @@ public class Movie {
     
     //@LazyCollection(LazyCollectionOption.TRUE)
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    
     private List<Actor> actors = new ArrayList<>();
 
 }

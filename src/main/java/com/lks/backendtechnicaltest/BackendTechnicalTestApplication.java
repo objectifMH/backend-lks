@@ -51,7 +51,7 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
          */
         System.out.println();
         System.out.println("*************************");
-        System.out.println("* Acteurs               *");
+        System.out.println("* Acteurs               m*");
         System.out.println("*************************");
 
         // // Création de nouveaux acteurs // //
@@ -238,6 +238,25 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
                 .forEach(System.out::println);
         System.out.println();
         
+
+        // Suppression d'un film //
+        //movieServiceImpl.deleteById(1);
+        
+        
+        Actor newActor = actorServiceImpl.findById(1);
+        Movie newMovie = movieServiceImpl.findById(13);
+        System.out.println(newMovie.getActors());
+        
+        //Directeur a supprimer : 
+        Director director5 =  Director.builder()
+                .name("Guy ritchie")
+                .build();
+        directorServiceImpl.save(director5);
+//        directorServiceImpl.deleteById(5);
+
+        movieServiceImpl.deleteById(10);
+        movieServiceImpl.deleteById(11);
+        movieServiceImpl.deleteById(25);
         
 
     }
