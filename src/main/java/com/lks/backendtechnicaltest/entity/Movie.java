@@ -60,8 +60,6 @@ public class Movie {
 
     @ManyToOne
     private Director director;
-
-    //@ManyToMany(cascade=CascadeType.ALL)
     
     @ManyToMany
     @Builder.Default

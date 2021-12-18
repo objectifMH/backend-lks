@@ -5,6 +5,7 @@ import com.lks.backendtechnicaltest.entity.Director;
 import com.lks.backendtechnicaltest.entity.Movie;
 import com.lks.backendtechnicaltest.repository.ActorRepository;
 import com.lks.backendtechnicaltest.repository.DirectorRepository;
+import com.lks.backendtechnicaltest.repository.MovieRepository;
 import com.lks.backendtechnicaltest.service.Implementation.ActorServiceImpl;
 import com.lks.backendtechnicaltest.service.Implementation.DirectorServiceImpl;
 import com.lks.backendtechnicaltest.service.Implementation.MovieServiceImpl;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -32,6 +34,9 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
 
     @Autowired
     private MovieServiceImpl movieServiceImpl;
+
+    @Autowired
+    private MovieRepository movieRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(BackendTechnicalTestApplication.class, args);
@@ -237,27 +242,80 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
         movieServiceImpl.findActorsForMovieById(13)
                 .forEach(System.out::println);
         System.out.println();
-        
 
         // Suppression d'un film //
         //movieServiceImpl.deleteById(1);
-        
-        
         Actor newActor = actorServiceImpl.findById(1);
         Movie newMovie = movieServiceImpl.findById(13);
         System.out.println(newMovie.getActors());
-        
+
         //Directeur a supprimer : 
-        Director director5 =  Director.builder()
+        Director director5 = Director.builder()
                 .name("Guy ritchie")
                 .build();
         directorServiceImpl.save(director5);
 //        directorServiceImpl.deleteById(5);
 
-        movieServiceImpl.deleteById(10);
-        movieServiceImpl.deleteById(11);
-        movieServiceImpl.deleteById(25);
-        
+//        movieServiceImpl.deleteById(10);
+//        movieServiceImpl.deleteById(11);
+//        movieServiceImpl.deleteById(25);
+//
+//        movieRepository.deleteById(13);
 
+
+        System.out.println(movieServiceImpl.findActorsForMovieById(22));
+
+        
+        Scanner sc;
+        movieServiceImpl.findAll()
+                .forEach(System.out::println);
+        
+//        System.out.println();
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Veuillez saisir l'id du film à supprimer : ");
+//        Integer idMovieDelete = sc.nextInt();
+//        System.out.println("Vous avez saisi le nombre : " + idMovieDelete);
+//        movieServiceImpl.deleteById(idMovieDelete);
+        
+        movieServiceImpl.findAll().forEach(movie -> {
+            System.out.println("Suppresion du film : " + movie.getId());
+            movieServiceImpl.deleteById(movie.getId());
+        });
+        
+        
+        movieServiceImpl.findAll()
+                .forEach(System.out::println);
+        System.out.println();
+        
+        
+        directorServiceImpl.findAll()
+                .forEach(System.out::println);
+        
+        System.out.println();
+        sc = new Scanner(System.in);
+        System.out.println("Veuillez saisir l'id du réalisateur à supprimer : ");
+        Integer idDirectorDelete = sc.nextInt();
+        System.out.println("Vous avez saisi le nombre : " + idDirectorDelete);
+        actorServiceImpl.deleteById(idDirectorDelete);
+        
+        
+        directorServiceImpl.findAll()
+                .forEach(System.out::println);
+        System.out.println();
+        
+        actorServiceImpl.findAll()
+                .forEach(System.out::println);
+        
+        System.out.println();
+        sc = new Scanner(System.in);
+        System.out.println("Veuillez saisir l'id de l'acteur à supprimer : ");
+        Integer idActorDelete = sc.nextInt();
+        System.out.println("Vous avez saisi le nombre : " + idActorDelete);
+        actorServiceImpl.deleteById(idActorDelete);
+        
+        
+        actorServiceImpl.findAll()
+                .forEach(System.out::println);
+        System.out.println();
     }
 }

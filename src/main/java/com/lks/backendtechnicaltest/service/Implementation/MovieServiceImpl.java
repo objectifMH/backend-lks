@@ -87,7 +87,7 @@ public class MovieServiceImpl implements MovieService {
 
         Movie movieToDelete = movieRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFound("Movie with id : " + id + ", is not found !"));
-        movieToDelete.getActors().removeAll(movieToDelete.getActors());
+        //movieToDelete.getActors().removeAll(movieToDelete.getActors());
         //movie.setDirector(null);
 
         movieRepository.deleteById(id);
