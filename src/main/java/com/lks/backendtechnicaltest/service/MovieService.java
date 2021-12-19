@@ -25,9 +25,9 @@ public interface MovieService {
 
     List<Movie> findMoviesByTitle(String title);
     
-    List<Movie> findByDirector(Integer id);
+    List<Movie> findMoviesByDirector(Integer id);
     
-    List<Movie> findByActor(Integer id);
+    List<Movie> findMoviesByActor(Integer id);
     
     List<Actor> findActorsForMovieById(Integer id);
 

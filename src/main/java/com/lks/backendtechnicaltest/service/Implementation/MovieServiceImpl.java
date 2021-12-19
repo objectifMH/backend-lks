@@ -54,7 +54,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie findByTitle(String title) {
-        return movieRepository.findByTitleIgnoreCase(title)
+        return movieRepository.findMoviesByTitleIgnoreCase(title)
                 .orElseThrow(() -> new ResourceNotFoundException("Movie", "title", title));
     }
 
@@ -65,13 +65,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findByDirector(Integer id) {
-        return movieRepository.findByDirector(id);
+    public List<Movie> findMoviesByDirector(Integer id) {
+        return movieRepository.findMoviesByDirector(id);
     }
 
     @Override
-    public List<Movie> findByActor(Integer id) {
-        return movieRepository.findByActor(id);
+    public List<Movie> findMoviesByActor(Integer id) {
+        return movieRepository.findMoviesByActor(id);
     }
 
     @Override
@@ -81,7 +81,6 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void deleteById(Integer id) {
-
         Movie movieToDelete = movieRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Movie", "id", id));
         movieRepository.deleteById(id);

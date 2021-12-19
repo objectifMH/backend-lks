@@ -221,14 +221,14 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
         // Affichage des Films d'un réalisateur avec l'id 1 //
         System.out.println();
         System.out.println("Affichage des films réalisés par le réalisateur avec l'id : 1  ");
-        movieServiceImpl.findByDirector(1)
+        movieServiceImpl.findMoviesByDirector(1)
                 .forEach(System.out::println);
         System.out.println();
 
         // Affichage des films joué par l'acteur avec l'id : 1 //
         System.out.println();
         System.out.println("Affichage des films de l'acteur qui a pour id : 7  ");
-        movieServiceImpl.findByActor(7)
+        movieServiceImpl.findMoviesByActor(7)
                 .forEach(System.out::println);
         System.out.println();
 
