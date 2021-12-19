@@ -29,9 +29,8 @@ public class DirectorController implements DirectorApi {
     }
 
     @Override
-    //public ResponseEntity<List<Director>> findAll() {
-    public List<Director> findAll() {
-        return directorService.findAll();
+    public ResponseEntity<List<Director>> findAll() {
+        return ResponseEntity.status(HttpStatus.CREATED).body(directorService.findAll());
     }
 
     @Override

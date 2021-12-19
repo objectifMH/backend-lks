@@ -33,10 +33,10 @@ public interface ActorApi {
     @GetMapping(value = APP_ROOT + "actors/{id}")
     ResponseEntity<Actor> findById(@PathVariable Integer id);
     
-    @GetMapping(value = APP_ROOT + "actors/search/name/{name}")
+    @GetMapping(value = APP_ROOT + "actors/name/{name}")
     ResponseEntity<Actor> findByName(@PathVariable String name);
     
-    @GetMapping(value = APP_ROOT + "actors/search/list/{name}")
+    @GetMapping(value = APP_ROOT + "actors/searchActors/{name}")
     ResponseEntity<List<Actor>> findActorsByName(@PathVariable String nameActor);
     
     @DeleteMapping(value = APP_ROOT + "actors/{id}")

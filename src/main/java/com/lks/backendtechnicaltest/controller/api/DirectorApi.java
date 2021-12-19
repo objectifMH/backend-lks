@@ -26,8 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface DirectorApi {
     
     @GetMapping(value = APP_ROOT + "directors")
-    List<Director> findAll();
-    //ResponseEntity<List<Director>> findAll();
+    ResponseEntity<List<Director>> findAll();
     
     @PostMapping(value = APP_ROOT + "directors")
     ResponseEntity<Director> save(@RequestBody Director director);
@@ -35,10 +34,10 @@ public interface DirectorApi {
     @GetMapping(value = APP_ROOT + "directors/{id}")
     ResponseEntity<Director> findById(@PathVariable Integer id);
     
-    @GetMapping(value = APP_ROOT + "directors/search/name/{name}")
+    @GetMapping(value = APP_ROOT + "directors/name/{name}")
     ResponseEntity<Director> findByName(@PathVariable String name);
     
-    @GetMapping(value = APP_ROOT + "directors/search/list/{name}")
+    @GetMapping(value = APP_ROOT + "directors/searchDirectors/{name}")
     ResponseEntity<List<Director>> findDirectorByName(@PathVariable String name);
     
     @DeleteMapping(value = APP_ROOT + "directors/{id}")
