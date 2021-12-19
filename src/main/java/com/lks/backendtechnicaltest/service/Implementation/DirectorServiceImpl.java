@@ -5,11 +5,8 @@
  */
 package com.lks.backendtechnicaltest.service.Implementation;
 
-import com.lks.backendtechnicaltest.entity.Actor;
 import com.lks.backendtechnicaltest.entity.Director;
-import com.lks.backendtechnicaltest.exception.EntityNotFound;
 import com.lks.backendtechnicaltest.exception.ResourceNotFoundException;
-import com.lks.backendtechnicaltest.repository.ActorRepository;
 import com.lks.backendtechnicaltest.repository.DirectorRepository;
 import com.lks.backendtechnicaltest.service.DirectorService;
 import java.util.List;
@@ -43,13 +40,13 @@ public class DirectorServiceImpl implements DirectorService {
     @Override
     public Director findById(Integer id) {
         return directorRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFound("Director with id : " + id + ", is not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Director", "id", id));
     }
 
     @Override
     public void deleteById(Integer id) {
         Director director = directorRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFound("Director with id : " + id + ", is not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Director", "id", id));
         directorRepository.deleteById(id);
         System.out.println("Director with id : " + id + ", is deleted !");
     }
@@ -57,13 +54,12 @@ public class DirectorServiceImpl implements DirectorService {
     @Override
     public Director findByName(String name) {
         return directorRepository.findByNameIgnoreCase(name)
-                .orElseThrow(() -> new EntityNotFound("Director with name : " + name + ", is not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Director", "name", name));
 
     }
 
     @Override
     public List<Director> findDirectorsByName(String name) {
-        System.out.println(directorRepository.findByNameContainingIgnoreCase(name).size());
         return directorRepository.findByNameContainingIgnoreCase(name);
     }
 

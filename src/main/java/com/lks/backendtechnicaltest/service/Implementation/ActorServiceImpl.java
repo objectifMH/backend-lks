@@ -7,10 +7,8 @@ package com.lks.backendtechnicaltest.service.Implementation;
 
 import com.lks.backendtechnicaltest.entity.Actor;
 import com.lks.backendtechnicaltest.repository.ActorRepository;
-import com.lks.backendtechnicaltest.exception.EntityNotFound;
 import com.lks.backendtechnicaltest.exception.ResourceNotFoundException;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lks.backendtechnicaltest.service.ActorService;
@@ -42,7 +40,7 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public Actor findById(Integer id) {
         Actor actor = actorRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFound("Actor with id : " + id + ", is not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Actor", "id", id));
 
         return actor;
 
@@ -52,8 +50,7 @@ public class ActorServiceImpl implements ActorService {
     public void deleteById(Integer id) {
 
         if (!actorRepository.existsById(id)) {
-
-            throw new ResourceNotFoundException("Actor with id : " + id + ", is not found !");
+            throw new ResourceNotFoundException("Actor", "id", id);
         }
         actorRepository.deleteById(id);
     }
@@ -61,8 +58,7 @@ public class ActorServiceImpl implements ActorService {
     @Override
     public Actor findByName(String name) {
         return actorRepository.findByNameIgnoreCase(name)
-                .orElseThrow(() -> new EntityNotFound("Actor with name : " + name + ", is not found !"));
-
+                .orElseThrow(() -> new ResourceNotFoundException("Actor", "name", name));
     }
 
     @Override

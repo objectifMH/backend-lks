@@ -3,14 +3,10 @@ package com.lks.backendtechnicaltest;
 import com.lks.backendtechnicaltest.entity.Actor;
 import com.lks.backendtechnicaltest.entity.Director;
 import com.lks.backendtechnicaltest.entity.Movie;
-import com.lks.backendtechnicaltest.repository.ActorRepository;
-import com.lks.backendtechnicaltest.repository.DirectorRepository;
 import com.lks.backendtechnicaltest.repository.MovieRepository;
 import com.lks.backendtechnicaltest.service.Implementation.ActorServiceImpl;
 import com.lks.backendtechnicaltest.service.Implementation.DirectorServiceImpl;
 import com.lks.backendtechnicaltest.service.Implementation.MovieServiceImpl;
-import static java.time.Instant.now;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -277,10 +273,10 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
 //        System.out.println("Vous avez saisi le nombre : " + idMovieDelete);
 //        movieServiceImpl.deleteById(idMovieDelete);
         
-        movieServiceImpl.findAll().forEach(movie -> {
-            System.out.println("Suppresion du film : " + movie.getId());
-            movieServiceImpl.deleteById(movie.getId());
-        });
+//        movieServiceImpl.findAll().forEach(movie -> {
+//            System.out.println("Suppresion du film : " + movie.getId());
+//            movieServiceImpl.deleteById(movie.getId());
+//        });
         
         
         movieServiceImpl.findAll()
@@ -291,12 +287,12 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
         directorServiceImpl.findAll()
                 .forEach(System.out::println);
         
-        System.out.println();
-        sc = new Scanner(System.in);
-        System.out.println("Veuillez saisir l'id du réalisateur à supprimer : ");
-        Integer idDirectorDelete = sc.nextInt();
-        System.out.println("Vous avez saisi le nombre : " + idDirectorDelete);
-        actorServiceImpl.deleteById(idDirectorDelete);
+//        System.out.println();
+//        sc = new Scanner(System.in);
+//        System.out.println("Veuillez saisir l'id du réalisateur à supprimer : ");
+//        Integer idDirectorDelete = sc.nextInt();
+//        System.out.println("Vous avez saisi le nombre : " + idDirectorDelete);
+//        actorServiceImpl.deleteById(idDirectorDelete);
         
         
         directorServiceImpl.findAll()
@@ -306,12 +302,12 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
         actorServiceImpl.findAll()
                 .forEach(System.out::println);
         
-        System.out.println();
-        sc = new Scanner(System.in);
-        System.out.println("Veuillez saisir l'id de l'acteur à supprimer : ");
-        Integer idActorDelete = sc.nextInt();
-        System.out.println("Vous avez saisi le nombre : " + idActorDelete);
-        actorServiceImpl.deleteById(idActorDelete);
+//        System.out.println();
+//        sc = new Scanner(System.in);
+//        System.out.println("Veuillez saisir l'id de l'acteur à supprimer : ");
+//        Integer idActorDelete = sc.nextInt();
+//        System.out.println("Vous avez saisi le nombre : " + idActorDelete);
+//        actorServiceImpl.deleteById(idActorDelete);
         
         
         actorServiceImpl.findAll()

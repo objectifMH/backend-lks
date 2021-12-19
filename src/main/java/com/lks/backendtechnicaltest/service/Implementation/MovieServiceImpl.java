@@ -7,7 +7,7 @@ package com.lks.backendtechnicaltest.service.Implementation;
 
 import com.lks.backendtechnicaltest.entity.Actor;
 import com.lks.backendtechnicaltest.entity.Movie;
-import com.lks.backendtechnicaltest.exception.EntityNotFound;
+import com.lks.backendtechnicaltest.exception.ResourceNotFoundException;
 import com.lks.backendtechnicaltest.repository.ActorRepository;
 import com.lks.backendtechnicaltest.repository.MovieRepository;
 import com.lks.backendtechnicaltest.service.MovieService;
@@ -49,13 +49,13 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie findById(Integer id) {
         return movieRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFound("Movie with id : " + id + ", is not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Movie", "id", id));
     }
 
     @Override
     public Movie findByTitle(String title) {
         return movieRepository.findByTitleIgnoreCase(title)
-                .orElseThrow(() -> new EntityNotFound("Movie with title : " + title + ", is not found !"));
+                .orElseThrow(() -> new ResourceNotFoundException("Movie", "title", title));
     }
 
     @Override
@@ -76,20 +76,14 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Actor> findActorsForMovieById(Integer id) {
-
-        System.out.println("Dans findActorsForMovieById taille : id, " + actorRepository.findActorsForMovieById(id).size());
         return actorRepository.findActorsForMovieById(id);
-
     }
 
     @Override
     public void deleteById(Integer id) {
 
         Movie movieToDelete = movieRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFound("Movie with id : " + id + ", is not found !"));
-        //movieToDelete.getActors().removeAll(movieToDelete.getActors());
-        //movie.setDirector(null);
-
+                .orElseThrow(() -> new ResourceNotFoundException("Movie", "id", id));
         movieRepository.deleteById(id);
     }
 

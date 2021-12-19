@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.lks.backendtechnicaltest.exception;
+package com.lks.backendtechnicaltest.config;
 
 /**
  *
  * @author omh
  */
-public class EntityNotFound extends RuntimeException {
-
-    public EntityNotFound(String message) {
-        super(message);
-    }
+public interface Constante {
+    
+    public static String APP_ROOT = "lks/backend/v1/";
+    
 }
