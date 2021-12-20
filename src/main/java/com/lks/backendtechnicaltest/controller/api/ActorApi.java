@@ -7,7 +7,7 @@ package com.lks.backendtechnicaltest.controller.api;
 
 import static com.lks.backendtechnicaltest.config.Constante.APP_ROOT;
 import com.lks.backendtechnicaltest.entity.Actor;
-import io.swagger.annotations.Api;
+//import io.swagger.annotations.Api;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author omh
  */
 
-@Api(APP_ROOT + "actors")
+//@Api(APP_ROOT + "actors")
 public interface ActorApi {
     
     @GetMapping(value = APP_ROOT + "actors")

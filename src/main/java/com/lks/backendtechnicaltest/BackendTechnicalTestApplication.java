@@ -7,6 +7,8 @@ import com.lks.backendtechnicaltest.repository.MovieRepository;
 import com.lks.backendtechnicaltest.service.Implementation.ActorServiceImpl;
 import com.lks.backendtechnicaltest.service.Implementation.DirectorServiceImpl;
 import com.lks.backendtechnicaltest.service.Implementation.MovieServiceImpl;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +22,8 @@ import org.springframework.dao.DataAccessException;
 
 @SpringBootApplication
 @Transactional
+@OpenAPIDefinition(info = @Info(title = "Movies API", version = "1.0", description = "Movies, Actors & Directors Information"))
+
 public class BackendTechnicalTestApplication implements CommandLineRunner {
 
     @Autowired
@@ -50,10 +54,10 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
          *
          *
          */
-        System.out.println();
-        System.out.println("*************************");
-        System.out.println("* Acteurs               m*");
-        System.out.println("*************************");
+//        System.out.println();
+//        System.out.println("*************************");
+//        System.out.println("* Acteurs               ");
+//        System.out.println("*************************");
 
         // // Création de nouveaux acteurs // //
         Actor newActorSamuel = Actor.builder()
@@ -64,10 +68,6 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
                 .name("Denzel Washington")
                 .build();
 
-        // Affichage nouveaux acteurs //
-        System.out.println(newActorSamuel);
-        System.out.println(newActorDenzel);
-
         // Sauvergarder les nouveaux acteurs dans BD //
         try {
             actorServiceImpl.save(newActorDenzel);
@@ -76,41 +76,15 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
             System.out.println(ex.getCause().getMessage());
         }
 
-        // Affichage des acteurs dans la BD //
-        List<Actor> listActors = actorServiceImpl.findAll();
-        listActors.forEach(System.out::println);
-
-        // Recherche d'un acteur par id //
-        Actor actorForId3 = actorServiceImpl.findById(3);
-        System.out.println(actorForId3);
-
-        // Suppression d'un acteur par id : 6//
-        //actorServiceImpl.deleteById(6);
-        // Affichache des acteurs dans la BD //
-        listActors = actorServiceImpl.findAll();
-        listActors.forEach(System.out::println);
-
-        // Recherche d'un acteur par nom : "Motoko" //
-        Actor actorSearchNameMotoko = actorServiceImpl.findByName("motoko");
-        System.out.println();
-        System.out.println(actorSearchNameMotoko);
-
-        // Recherche d'une liste d'acteurs avec un nom comportant : "o" //
-        List<Actor> listActosRy = actorServiceImpl.findActorsByName("o");
-        if (listActosRy.size() > 0) {
-            System.out.println("Tous les acteurs avec un nom comportant 'p'");
-            listActosRy.forEach(System.out::println);
-        }
-
         /**
          * Réalisateurs
          *
          *
          */
-        System.out.println();
-        System.out.println("*************************");
-        System.out.println("* Réalisateurs          *");
-        System.out.println("*************************");
+//        System.out.println();
+//        System.out.println("*************************");
+//        System.out.println("* Réalisateurs          *");
+//        System.out.println("*************************");
 
         // // Création de nouveaux réalisateurs // //
         Director newDirectorChristopher = Director.builder()
@@ -121,50 +95,19 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
                 .name("David Fincher")
                 .build();
 
-        // Affichage nouveaux réalisateurs //
-        System.out.println(newDirectorChristopher);
-        System.out.println(newDirectorDavid);
-
         // Sauvergarder les nouveaux realisateurs dans BD //
         directorServiceImpl.save(newDirectorChristopher);
         directorServiceImpl.save(newDirectorDavid);
-
-        // Affichache des realisateurs dans la BD //
-        List<Director> listDirectors = directorServiceImpl.findAll();
-        listDirectors.forEach(System.out::println);
-
-        // Recherche d'un realisateur par id //
-        Director directorForId3 = directorServiceImpl.findById(3);
-        System.out.println(directorForId3);
-
-        // Suppression d'un réalisateur par id : 4//
-        directorServiceImpl.deleteById(4);
-
-        // Affichage des realisateurs dans la BD //
-        listDirectors = directorServiceImpl.findAll();
-        listDirectors.forEach(System.out::println);
-
-        // Recherche d'un réalisateur par nom : "Steven Spielberg" //
-        Director directorSearchNameSS = directorServiceImpl.findByName("Steven Spielberg");
-        System.out.println();
-        System.out.println(directorSearchNameSS);
-
-        // Recherche d'une liste de réalisateurs avec un nom comportant : "o" //
-        List<Director> listDirectorForO = directorServiceImpl.findDirectorsByName("o");
-        if (listDirectorForO.size() > 0) {
-            System.out.println("Tous les réalisateurs avec un nom comportant 'o'");
-            listDirectorForO.forEach(System.out::println);
-        }
 
         /**
          * Movies
          *
          *
          */
-        System.out.println();
-        System.out.println("*************************");
-        System.out.println("* Films          *");
-        System.out.println("*************************");
+//        System.out.println();
+//        System.out.println("*************************");
+//        System.out.println("* Films                 *");
+//        System.out.println("*************************");
 
         // // Création de nouveaux films // //
         List<Actor> listActorsInit = new ArrayList<>();
@@ -185,20 +128,6 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
                 .actors(listActorsInit)
                 .build();
 
-        // Affichage nouveaux films //
-        System.out.println(newMoviePrestige);
-        System.out.println();
-        System.out.println(newMovieSeven);
-
-        // Affichage nouveaux Films //
-        System.out.println();
-        System.out.println("Affichage des nouveaux films >  ");
-        System.out.println();
-
-        System.out.println(newMoviePrestige);
-        System.out.println(newMovieSeven);
-        System.out.println();
-
         // Sauvergarder les nouveaux Films dans BD //
         movieServiceImpl.save(newMoviePrestige);
 
@@ -214,24 +143,6 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
         List<Movie> listMovies = movieServiceImpl.findAll();
         listMovies.forEach(System.out::println);
 
-        System.out.println(" Les films contenant 'sev'  :");
-        movieServiceImpl.findMoviesByTitle("sev")
-                .forEach(System.out::println);
-
-        // Affichage des Films d'un réalisateur avec l'id 1 //
-        System.out.println();
-        System.out.println("Affichage des films réalisés par le réalisateur avec l'id : 1  ");
-        movieServiceImpl.findMoviesByDirector(1)
-                .forEach(System.out::println);
-        System.out.println();
-
-        // Affichage des films joué par l'acteur avec l'id : 1 //
-        System.out.println();
-        System.out.println("Affichage des films de l'acteur qui a pour id : 7  ");
-        movieServiceImpl.findMoviesByActor(7)
-                .forEach(System.out::println);
-        System.out.println();
-
         // Affichage des Acteurs du film qui a pour id : 1 //
         System.out.println();
         System.out.println("Affichage des acteurs du film qui a pour id : 13  ");
@@ -239,79 +150,6 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
                 .forEach(System.out::println);
         System.out.println();
 
-        // Suppression d'un film //
-        //movieServiceImpl.deleteById(1);
-        Actor newActor = actorServiceImpl.findById(1);
-        Movie newMovie = movieServiceImpl.findById(13);
-        System.out.println(newMovie.getActors());
-
-        //Directeur a supprimer : 
-        Director director5 = Director.builder()
-                .name("Guy ritchie")
-                .build();
-        directorServiceImpl.save(director5);
-//        directorServiceImpl.deleteById(5);
-
-//        movieServiceImpl.deleteById(10);
-//        movieServiceImpl.deleteById(11);
-//        movieServiceImpl.deleteById(25);
-//
-//        movieRepository.deleteById(13);
-
-
-        System.out.println(movieServiceImpl.findActorsForMovieById(22));
-
         
-        Scanner sc;
-        movieServiceImpl.findAll()
-                .forEach(System.out::println);
-        
-//        System.out.println();
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("Veuillez saisir l'id du film à supprimer : ");
-//        Integer idMovieDelete = sc.nextInt();
-//        System.out.println("Vous avez saisi le nombre : " + idMovieDelete);
-//        movieServiceImpl.deleteById(idMovieDelete);
-        
-//        movieServiceImpl.findAll().forEach(movie -> {
-//            System.out.println("Suppresion du film : " + movie.getId());
-//            movieServiceImpl.deleteById(movie.getId());
-//        });
-        
-        
-        movieServiceImpl.findAll()
-                .forEach(System.out::println);
-        System.out.println();
-        
-        
-        directorServiceImpl.findAll()
-                .forEach(System.out::println);
-        
-//        System.out.println();
-//        sc = new Scanner(System.in);
-//        System.out.println("Veuillez saisir l'id du réalisateur à supprimer : ");
-//        Integer idDirectorDelete = sc.nextInt();
-//        System.out.println("Vous avez saisi le nombre : " + idDirectorDelete);
-//        actorServiceImpl.deleteById(idDirectorDelete);
-        
-        
-        directorServiceImpl.findAll()
-                .forEach(System.out::println);
-        System.out.println();
-        
-        actorServiceImpl.findAll()
-                .forEach(System.out::println);
-        
-//        System.out.println();
-//        sc = new Scanner(System.in);
-//        System.out.println("Veuillez saisir l'id de l'acteur à supprimer : ");
-//        Integer idActorDelete = sc.nextInt();
-//        System.out.println("Vous avez saisi le nombre : " + idActorDelete);
-//        actorServiceImpl.deleteById(idActorDelete);
-        
-        
-        actorServiceImpl.findAll()
-                .forEach(System.out::println);
-        System.out.println();
     }
 }

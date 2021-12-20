@@ -7,7 +7,7 @@ package com.lks.backendtechnicaltest.controller.api;
 
 import static com.lks.backendtechnicaltest.config.Constante.APP_ROOT;
 import com.lks.backendtechnicaltest.entity.Director;
-import io.swagger.annotations.Api;
+//import io.swagger.annotations.Api;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 
 
-@Api(APP_ROOT + "directors")
+//@Api(APP_ROOT + "directors")
 public interface DirectorApi {
     
     @GetMapping(value = APP_ROOT + "directors")
