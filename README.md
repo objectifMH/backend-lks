@@ -6,7 +6,6 @@ Documentation à l'aide de Open Api à retrouver à l'adresse : http://localhost
 Les routes demandées au minimum pour cet exercice vont permettre de :
 
 - Lister les films réalisés par une personne donnée :
-
   id Director, 
   http://localhost:8090/lks/backend/v1/movies/searchMovies/director/{id}
 
