@@ -5,7 +5,6 @@
  */
 package com.lks.backendtechnicaltest.repository;
 
-import com.lks.backendtechnicaltest.entity.Actor;
 import com.lks.backendtechnicaltest.entity.Movie;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +15,7 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author omh
  */
+
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
 //  Lister les films réalisés par une personne donnée

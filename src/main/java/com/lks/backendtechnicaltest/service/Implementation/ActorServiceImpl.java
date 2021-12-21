@@ -41,14 +41,12 @@ public class ActorServiceImpl implements ActorService {
     public Actor findById(Integer id) {
         Actor actor = actorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Actor", "id", id));
-
         return actor;
 
     }
 
     @Override
     public void deleteById(Integer id) {
-
         if (!actorRepository.existsById(id)) {
             throw new ResourceNotFoundException("Actor", "id", id);
         }

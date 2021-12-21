@@ -75,4 +75,9 @@ public class MovieController implements MovieApi {
         return ResponseEntity.ok().build();
     }
 
+    @Override
+    public ResponseEntity<Movie> update(Movie movie) {
+        return ResponseEntity.status(HttpStatus.OK).body(movieService.update(movie));
+    }
+
 }

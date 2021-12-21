@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
  * @author omh
  */
 @Service
-@Slf4j
 @Transactional
 public class MovieServiceImpl implements MovieService {
 
@@ -43,6 +42,13 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie save(Movie movie) {
+        return movieRepository.save(movie);
+    }
+
+    @Override
+    public Movie update(Movie movie) {
+        Movie movieToUpdate = movieRepository.findById(movie.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Movie", "id", movie.getId()));
         return movieRepository.save(movie);
     }
 

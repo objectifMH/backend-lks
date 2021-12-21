@@ -12,7 +12,6 @@ import io.swagger.v3.oas.annotations.info.Info;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -35,8 +34,6 @@ public class BackendTechnicalTestApplication implements CommandLineRunner {
     @Autowired
     private MovieServiceImpl movieServiceImpl;
 
-    @Autowired
-    private MovieRepository movieRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(BackendTechnicalTestApplication.class, args);

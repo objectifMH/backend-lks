@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("*")
 public interface DirectorRepository extends JpaRepository<Director, Integer> {
 
-    //Recherche une liste de directeur ayant le  mot clé name : 
-    //Ex :    /directors/search/byName?nd=Nig
-    @RestResource(path = "/byName")
     public Director findByName(String name);
 
     public Optional<Director> findByNameIgnoreCase(String name);

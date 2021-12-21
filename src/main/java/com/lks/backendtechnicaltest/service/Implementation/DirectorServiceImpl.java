@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
  *
  * @author omh
  */
+
 @Service
 public class DirectorServiceImpl implements DirectorService {
 
@@ -55,7 +56,6 @@ public class DirectorServiceImpl implements DirectorService {
     public Director findByName(String name) {
         return directorRepository.findByNameIgnoreCase(name)
                 .orElseThrow(() -> new ResourceNotFoundException("Director", "name", name));
-
     }
 
     @Override

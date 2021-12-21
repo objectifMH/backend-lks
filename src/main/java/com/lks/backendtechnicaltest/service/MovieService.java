@@ -18,6 +18,8 @@ public interface MovieService {
     List<Movie> findAll();
 
     Movie save(Movie movie);
+    
+    Movie update(Movie movie);
 
     Movie findById(Integer id);
 

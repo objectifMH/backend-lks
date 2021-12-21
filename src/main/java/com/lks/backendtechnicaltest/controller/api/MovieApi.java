@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -37,11 +38,22 @@ public interface MovieApi {
     ResponseEntity<List<Movie>> findAll();
 
     @PostMapping(value = APP_ROOT + "movies")
-    @Operation(summary = "Create or update a movie", description = "Save a movie without an id or update an existing movie with its id")
+    @Operation(summary = "Create a movie", description = "Save a movie without an id")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "The movie has been created.", content = {
             @Content(mediaType = "application/json", schema = @Schema(implementation = Movie.class))})})
     ResponseEntity< Movie> save(@RequestBody Movie movie);
+
+    @PutMapping(value = APP_ROOT + "movies/update")
+    @Operation(summary = "Update a movie", description = "Update an existing movie")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "The movie has been updated.", content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Movie.class))})
+        ,
+        @ApiResponse(responseCode = "404", description = "The movie is not found.", content = {
+            @Content(mediaType = "application/json", schema = @Schema(implementation = Movie.class))})
+    })
+    ResponseEntity< Movie> update(@RequestBody Movie movie);
 
     @GetMapping(value = APP_ROOT + "movies/{id}")
     @Operation(summary = "Find a movie", description = "Find a movie by its id")
